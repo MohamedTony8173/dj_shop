@@ -1,0 +1,79 @@
+{% extends "_base.html" %}
+{% load static %}
+{% block title %}edit profile{% endblock title %}
+{% block content %}
+<section class="section-conten padding-y bg">
+
+<div class="container">
+	<div class="row">
+{% include "include/sidebar.html" %}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Edit Profile</strong>
+		</header>
+		<div class="card-body">
+            <div class="mb-3 text-right">
+                <img src="{{userProfile.profile_pic.url}}" alt="user Profile" width="100" style="border-radius: 50%;" >
+            </div>
+			<div class="row">
+				<div class="col-md-12">
+                    <form action="{% url "accounts:profile" %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="">UserName</label>
+                                {{user_form.username}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="">Phone Number</label>
+                                {{user_form.phone_number}}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="">Profile Picture</label>
+                                {{user_profile.profile_pic}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">City</label>
+                                        {{user_profile.city}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">State</label>
+                                        {{user_profile.state}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="">Address Line 1</label>
+                                {{user_profile.address_line_1}}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                {{user_profile.address_line_2}}
+                               
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" value="Update Information" class="btn btn-primary">
+                        </div>
+                    </form>
+
+
+				</div>
+			</div>
+		</div> <!-- card-body .// -->
+		</article> <!-- order-group.// --> 
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+{% endblock %}

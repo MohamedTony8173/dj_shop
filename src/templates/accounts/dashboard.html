@@ -1,0 +1,51 @@
+{% extends "_base.html" %}
+{% load static %}
+{% block title %}dashboard{% endblock title %}
+{% block content %}
+<section class="section-conten padding-y bg">
+
+<div class="container">
+	<div class="row">
+{% include "include/sidebar.html" %}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Logged In as :</strong>
+			<span>{{user.username}}</span>
+		</header>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card" style="text-align: center;">
+						<div class="card-body">
+							<h5 class="card-title">
+								Total Orders
+							</h5>
+							<h4>{{order_count}}</h4>
+							<a href="{% url "accounts:my_order" %}">View Order</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="card" style="text-align: center;">
+						<div class="card-body">
+							<img src="{{user.userprofile.profile_pic.url}}" width="80"  alt="profile image">
+							<p class="mb-0">Email:{{user.email}}</p>
+							<p>Phone:{{user.phone}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- card-body .// -->
+		</article> <!-- order-group.// --> 
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+
+
+
+{% endblock content %}

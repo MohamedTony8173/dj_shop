@@ -1,0 +1,6 @@
+{% autoescape off %}
+Hello : {{user.username}}
+Please follow the  Link bellow  verification an account
+http://{{domain}}{% url "accounts:active" uidb64=uid token=token %}
+
+{% endautoescape %}
